@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Login form.</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css?<?echo time()?>" 
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" 
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      body{
+        background-image: url("bg_image.jpg");
+      }
+      input{
+        width: 100%;
+        margin-bottom: 5%;
+      }
+      #login{
+        float: right;
+      }
+      #forgot_psw{
+        float: left;
+        margin-top: 1%;
+      }
+      .button_area{
+        width: 100%;
+      }
+    </style>
+</head>
+<body>
+    <div class="card" style="margin:auto; width: 30%;margin-top: 20%; box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);">
+        <div class="card-header">
+          Авторизация
+        </div>
+        <div class="card-body">
+            <div id="input_area">
+              <input type="text" name="login" placeholder="Логин" required>
+              <input type="password" name="password" placeholder="Пароль" required>
+            </div>
+            <div id="button_area">
+              <a id="forgot_psw" href="#">Забыли пароль?</a>
+              <button class="btn btn-secondary" id="login">
+                <span id="entry-text">Войти</span>
+              </button>
+            </div>
+          </blockquote>
+        </div>
+      </div>
+</body>
