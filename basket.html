@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Basket.</title>
+    <link rel="icon" type="image/png" href="shopping-cart.png" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css?<?echo time()?>" 
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" 
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      body{
+        background-image: url("bg_image.jpg");
+      }
+      #container{
+          width: 70%;
+          margin: 0 auto;
+          margin-top: 6%;
+      }
+      #product_list_hidden{
+          display: none;
+          transition: all 2s linear;
+      }
+      #product_list_block{
+          display: block;
+          transition: all 2s linear;
+      }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand">Главная</a>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Search" style="margin-right: 5%;">
+              <button class="btn btn-outline-success" type="submit" style="margin-right: 5%;">Найти</button>
+            </form>
+        </div>
+    </nav>
+    <section class="products">
+        <div class="col-8" style="float: left;">
+            <div id="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                        <div class="card" style="width: 18rem;">
+                            <img src="item.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                            <h5 class="card-title" id="title">HYPERPC LUMEN PLUS</h5>
+                            <button id="buy" class="btn btn-primary" onclick="Show();">В корзину</button>
+                            <p id="price" style="float: right; margin-top: 2%;" class="price text-danger">65000</p>
+                            <div class="count" style="margin-top: 1%;">
+                                    <label>Кол-во: <input id="quantity" style="width: 17%;" placeholder="0"></label>
+                            </div>
+                            </div>
+                        </div>
+                    </div>                             
+                </div>
+            </div>
+        </div>
+        <div class="col-4" style="float:right; margin-top: 4%;">
+            <div id="product_list_hidden" class="card" style="width: 18rem;">
+                <img src="shopping-cart.png" class="card-img-top" alt="..." style="width: 128px; height: 128px; margin: 5% 25%;">
+                <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">Shopping-cart</h5>                  
+                </div>
+                <div class="card-body">
+                    <label>Наименование: </label>
+                        <ul id="nameList">
+                            <!--<li><p class="card-title" id="name"></p></li>-->
+                        </ul>
+                    <label>Общая сумма: </label><p class="price text-danger" id="totalAmount"></p>
+                    <label>Общее количество: </label><p class="price text-danger" id="count"></p>
+                    <button class="btn btn-primary" onclick="closeCart();">Очистить корзину</button>
+                </div>
+              </div>
+        </div>        
+    </section>
+    <script type="text/javascript">
+        
+        var productList = document.getElementById("product_list_hidden");
+        let tAmount = 0;
+        let tCount = 0;
+        let title;
+        let li;
+        let ul = document.getElementById("nameList");
+        let cnt = 0;
+        
+        let _name1;
+
+        function Show(){
+
+                cnt = document.getElementById("quantity").value;
+                tCount += parseInt(document.getElementById("quantity").value);                
+                console.log(tCount);    
+                if(tCount != 0){
+                    productList.id = "product_list_block";
+                    let _name = document.getElementById("title").innerHTML;
+                    let _amount = document.getElementById("totalAmount");
+                    let _count = document.getElementById('count');
+
+                    if(_name != _name1){
+                        li = document.createElement('li');
+                        li.innerHTML = '<p class="card-title" id="name">' + _name + '</p>';
+
+                        ul.append(li);
+                    }                    
+                    tAmount += cnt * parseInt(document.getElementById("price").innerHTML);                                             
+                    _amount.innerHTML = tAmount + " ₽ RUB";
+                    _count.innerHTML = tCount;
+
+                    _name1 = _name;
+
+                }else{
+                    productList.id = "product_list_hidden";
+                }
+
+                
+
+            }
+        function closeCart(){
+
+            productList.id = "product_list_hidden";
+            tCount = document.getElementById("quantity");
+            tCount.value = "";
+            tCount = null;
+            tAmount = null;
+
+        }
+                    
+            
+        
+
+    </script>
+</body>
+</html>
