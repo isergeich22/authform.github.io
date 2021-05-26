@@ -4,11 +4,13 @@ const productList = document.getElementById("product_list_hidden");
         let title;
         let li;
         let ul = document.getElementById("nameList");
+        let cnt = 0;
         
         let _name1;
 
         const Show = () => {
-
+                
+                cnt = document.getElementById("quantity").value;
                 tCount += parseInt(document.getElementById("quantity").value);                
                 console.log(tCount);    
                 if(isNaN(tCount)) tCount = 0;
